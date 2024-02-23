@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 
 class StrategyController extends Controller {
 
-    public function index() {
+    public function index(Request $request) {
+        if(!$request->user()) {
+            return response()->json(['error' => 'User does not exist'], 500);
+        }
 
         return $this->successResponse(
             StrategyResource::collection(Strategy::all())

@@ -17,13 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get(
+/*Route::middleware('auth:api')->get(
     '/user',
     function (Request $request) {
 
         return $request->user();
     }
-);
+)*/;
+
+Route::get('/user-info', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
 Route::get(
     'user/{user}/investments',
     [
@@ -31,7 +36,7 @@ Route::get(
         'investments'
     ]
 );
-Route::apiResource('strategy', StrategyController::class);
+Route::apiResource('strategy', StrategyController::class)->middleware('auth:sanctum');
     //->middleware('jwt');
 Route::apiResource('user', UserController::class);
 Route::apiResource('investment', InvestmentController::class);

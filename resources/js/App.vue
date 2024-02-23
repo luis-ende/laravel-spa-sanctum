@@ -1,3 +1,7 @@
+<script setup>
+import TestComponent from './components/TestComponent.vue'
+</script>
+
 <template>
-  <h1>Hi Vue!</h1>
+  <test-component></test-component>
 </template>
