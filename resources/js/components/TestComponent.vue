@@ -12,7 +12,8 @@ const currentUser = ref({
 })
 
 onMounted(() => {
-  getCurrentUser();
+  getStrategies()
+  getCurrentUser()
 })
 
 const handleLogin = () => {
@@ -82,8 +83,8 @@ const logout = () => {
         <h3>My strategies</h3>
         <button class="btn btn-secondary" @click="getStrategies">Get strategies Again</button>
         <div class="strategy mb-4" v-for="strategy in strategies" :key="strategy.id">
+          <div><strong v-text="strategy.type"></strong></div>
           <em v-text="strategy.created_at"></em><br>
-          <strong v-text="strategy.type"></strong>
         </div>
       </div>
     </div>
